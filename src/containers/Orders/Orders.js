@@ -31,11 +31,16 @@ componentDidMount() {
   render() {
     return (
       <div>
-        <Order />
-        <Order />
+        {this.state.orders.map(order => (
+          <Order 
+          key={order.id} 
+          ingredients={order.ingredients}
+          price={order.price}
+          />
+        ))}
       </div>
     )
   }
 }
 
-export default withErrorHandler(Orders)
+export default withErrorHandler(Orders, axios)
